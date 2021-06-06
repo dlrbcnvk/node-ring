@@ -22,20 +22,24 @@ db.sequelize.sync()
     console.log('db 연결 성공');
   })
   .catch(console.error);
+passportConfig();
 
 if (process.env.NODE_ENV === 'production') {
   app.use(morgan('combined'));
   app.use(hpp());
-  app.use(helmet());
+  app.use(helmet({ contentSecurityPolicy: false }));
+  app.use(cors({
+    origin: ['http://3.34.44.195', 'http://nodering.com' ],
+    credentials: true,
+  }));
 } else {
   app.use(morgan('dev'));
+  app.use(cors({
+    origin: true,
+    credentials: true,
+  }));
 }
 
-passportConfig();
-app.use(cors({
-  origin: ['http://localhost:3000', 'nodering.com', 'http://3.34.44.195'],
-  credentials: true,
-}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -43,6 +47,11 @@ app.use(session({
   saveUninitialized: false,
   resave: false,
   secret: process.env.COOKIE_SECRET,
+  cookie: {
+    httpOnly: true,
+    secure: false,
+    domain: process.env.NODE_ENV === 'production' && '.nodebird.com'
+  },
 }));
 app.use(passport.initialize());
 app.use(passport.session());
