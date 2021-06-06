@@ -5,6 +5,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false, // 필수
     },
   }, {
+    modelName: 'Post',
+    tableName: 'posts',
     charset: 'utf8mb4',
     collate: 'utf8mb4_general_ci',
   });
