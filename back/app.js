@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === 'production') {
 
 passportConfig();
 app.use(cors({
-  origin: ['http://localhost:3000', 'nodering.com'],
+  origin: ['http://localhost:3000', 'nodering.com', 'http://3.34.44.195	'],
   credentials: true,
 }));
 app.use(express.json());
