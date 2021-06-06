@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(hpp());
   app.use(helmet());
   app.use(cors({
-    origin: 'http://15.164.217.199',
+    origin: 'http://nodering.site',
     credentials: true,
   }));
 } else {
@@ -47,6 +47,11 @@ app.use(session({
   saveUninitialized: false,
   resave: false,
   secret: process.env.COOKIE_SECRET,
+  cookie: {
+    httpOnly: true,
+    secure: false,
+    domain: process.env.NODE_ENV === 'production' && '.nodering.site'
+  },
 }));
 app.use(passport.initialize());
 app.use(passport.session());
