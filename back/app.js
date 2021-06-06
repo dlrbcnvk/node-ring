@@ -27,9 +27,9 @@ passportConfig();
 if (process.env.NODE_ENV === 'production') {
   app.use(morgan('combined'));
   app.use(hpp());
-  app.use(helmet({ contentSecurityPolicy: false }));
+  app.use(helmet());
   app.use(cors({
-    origin: ['http://54.180.107.99', 'http://nodering.com' ],
+    origin: 'http://15.164.217.199',
     credentials: true,
   }));
 } else {
