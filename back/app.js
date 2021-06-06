@@ -47,11 +47,6 @@ app.use(session({
   saveUninitialized: false,
   resave: false,
   secret: process.env.COOKIE_SECRET,
-  cookie: {
-    httpOnly: true,
-    secure: false,
-    domain: process.env.NODE_ENV === 'production' && '.nodering.com'
-  },
 }));
 app.use(passport.initialize());
 app.use(passport.session());
