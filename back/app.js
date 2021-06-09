@@ -67,3 +67,10 @@ app.use('/posts', postsRouter);
 app.listen(80, () => {
   console.log('서버 실행 중...');
 })
+
+const io = require('socket.io')(server);
+io.on('connection', (socketServer) => {
+  socketServer.on('npmStop', () => {
+    process.exit(0);
+  });
+});
