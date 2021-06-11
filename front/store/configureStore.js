@@ -1,11 +1,10 @@
 import { compose, createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddlesare from 'redux-saga';
+import { createWrapper } from 'next-redux-wrapper';
 
 import reducer from '../reducers';
 import rootSaga from '../sagas';
-
-const { createWrapper } = require('next-redux-wrapper');
 
 const loggerMiddleware = ({ dispatch, getState }) => (next) => (action) => {
   console.log(action);
