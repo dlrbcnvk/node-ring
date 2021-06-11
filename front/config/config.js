@@ -1,1 +1,1 @@
-export const backUrl = 'http://3.34.193.92';
+export const backUrl = 'http://api.noderingring.site';

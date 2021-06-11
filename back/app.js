@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(hpp());
   app.use(helmet());
   app.use(cors({
-    origin: ['http://localhost:3060', 'noderingring.site', 'http://13.125.238.27'],
+    origin: ['http://localhost:3060', 'noderingring.site'],
     credentials: true,
   }));
 } else {
@@ -51,7 +51,7 @@ app.use(session({
   cookie: {
     httpOnly: true,
     secure: false,
-    domain: process.env.NODE_ENV === 'production' && '.nodering.site'
+    domain: process.env.NODE_ENV === 'production' && '.noderingring.site'
   },
 }));
 app.use(passport.initialize());
