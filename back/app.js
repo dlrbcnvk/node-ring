@@ -30,13 +30,13 @@ if (process.env.NODE_ENV === 'production') {
   app.use(hpp());
   app.use(helmet());
   app.use(cors({
-    origin: 'https://nodering.site',
+    origin: ['http://localhost:3060', 'noderingring.site'],
     credentials: true,
   }));
 } else {
   app.use(morgan('dev'));
   app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:3060',
     credentials: true,
   }));
 }
