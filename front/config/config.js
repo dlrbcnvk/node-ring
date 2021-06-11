@@ -1,1 +1,1 @@
-export const backUrl = 'https://api.nodering.com';
+export const backUrl = 'https://api.nodering.site';
