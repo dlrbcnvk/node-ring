@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { END } from 'redux-saga';
 import axios from 'axios';
-import { Router } from 'next/router';
+import Router from 'next/router';
 
 import AppLayout from '../components/AppLayout';
 import PostForm from '../components/PostForm';
