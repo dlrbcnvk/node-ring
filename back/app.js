@@ -65,6 +65,6 @@ app.get('/', (req, res) => {
 app.use('/user', userRouter);
 app.use('/post', postRouter);
 app.use('/posts', postsRouter);
-app.listen(80, () => {
+app.listen(85, () => {
   console.log('서버 실행 중...');
 })
