@@ -78,12 +78,10 @@ function signUpAPI(data) {
 
 function* signUp(action) {
   try {
-    const result = yield call(signUpAPI, action.data);
-    console.log(result);
+    yield call(signUpAPI, action.data);
     yield put({
       type: SIGN_UP_SUCCESS,
     });
-    console.log(action);
   } catch (err) {
     console.error(err);
     yield put({
@@ -104,7 +102,6 @@ function* logIn(action) {
       type: LOG_IN_SUCCESS,
       data: result.data,
     });
-    console.log(action);
   } catch (err) {
     console.error(err);
     yield put({
