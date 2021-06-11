@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { END } from 'redux-saga';
 import axios from 'axios';
+import { Router } from 'next/router';
 
 import AppLayout from '../components/AppLayout';
 import PostForm from '../components/PostForm';
@@ -15,6 +16,12 @@ const index = () => {
   const dispatch = useDispatch();
   const { me } = useSelector((state) => state.user);
   const { mainPosts, hasMorePosts, loadPostsLoading } = useSelector((state) => state.post);
+
+  useEffect(() => {
+    if (me && me.id) {
+      Router.push('/');
+    }
+  }, [me && me.id]);
 
   useEffect(() => {
     function onScroll() {
