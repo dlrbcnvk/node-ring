@@ -144,7 +144,7 @@ const signup = () => {
         </div>
         <br />
         <div>
-          <label htmlFor="open-kakao-link">카카오톡 오픈 프로필 링크</label>
+          <label htmlFor="open-kakao-link">오카 링크</label>
           <br />
           <Input name="open-kakao-link" type="url" value={kakaolink} required onChange={onChangeKakaolink} />
         </div>
