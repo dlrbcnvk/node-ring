@@ -50,7 +50,7 @@ app.use(session({
   secret: process.env.COOKIE_SECRET,
   cookie: {
     httpOnly: true,
-    secure: true,
+    secure: false,
     domain: process.env.NODE_ENV === 'production' && '.nodering.site'
   },
 }));
@@ -65,6 +65,6 @@ app.get('/', (req, res) => {
 app.use('/user', userRouter);
 app.use('/post', postRouter);
 app.use('/posts', postsRouter);
-app.listen(3065, () => {
+app.listen(80, () => {
   console.log('서버 실행 중...');
 })
