@@ -25,11 +25,12 @@ db.sequelize.sync()
 passportConfig();
 
 if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
   app.use(morgan('combined'));
   app.use(hpp());
   app.use(helmet());
   app.use(cors({
-    origin: 'http://nodering.site',
+    origin: 'https://nodering.site',
     credentials: true,
   }));
 } else {
@@ -49,7 +50,7 @@ app.use(session({
   secret: process.env.COOKIE_SECRET,
   cookie: {
     httpOnly: true,
-    secure: false,
+    secure: true,
     domain: process.env.NODE_ENV === 'production' && '.nodering.site'
   },
 }));
@@ -64,6 +65,6 @@ app.get('/', (req, res) => {
 app.use('/user', userRouter);
 app.use('/post', postRouter);
 app.use('/posts', postsRouter);
-app.listen(80, () => {
+app.listen(3065, () => {
   console.log('서버 실행 중...');
 })
